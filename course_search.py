@@ -3,6 +3,7 @@ course_search is a Python script using a terminal based menu to help
 students search for courses they might want to take at Brandeis
 '''
 
+import sched
 from schedule import Schedule
 import sys
 
@@ -47,6 +48,35 @@ def topmenu():
         elif command in ['s','subject']:
             subject = input("enter a subject:")
             schedule = schedule.subject([subject])
+            # for single_course in schedule.courses:
+            #     print(".....................")
+            #     print(single_course)
+
+        
+            '''
+                Zhiwei's 7a/7b/7e code starts from here
+            '''
+        elif command in ['coursenum','subject']:
+            if command == 'coursenum':
+                coursenum = input("enter the course number:")
+                schedule = schedule.ZhiweiHu_coursenum([coursenum])
+            else:
+                subject = input("enter the course subject")
+                schedule = schedule.subject([subject])
+        elif command in ['instructor']:
+            sub_command = input("filter by email or lastname?")
+            if sub_command == 'email':
+                email = input("enter the instructor's email")
+                schedule = schedule.email([email])
+            elif sub_command == 'lastname':
+                lastname = input("enter the instructor's lastname")
+                schedule = schedule.lastname([lastname])
+        elif command in ['small class', 'smallclass', 'small_class', 'smallClass']:
+            schedule = schedule.ZhiweiHu_own_filter_small_class().ZhiweiHu_own_filter_sort()
+            '''
+                Zhiwei's 7a/7b/7e code ends here
+            '''
+
         else:
             print('command',command,'is not supported')
             continue
