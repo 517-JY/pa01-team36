@@ -3,7 +3,7 @@ Bohan Chen bohanchen@brandeis.edu
 
 Zheng Chu zhengchu@brandeis.edu
 
-Zhiwei Hu zhiweihu@brandeis.edu
+Zhiwei Hu zhiweihu@brandeis.edu (HZW211/HZWhk416)
 
 Jiayin Li jiayinli007@brandeis.edu
 
