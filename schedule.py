@@ -51,7 +51,7 @@ class Schedule():
             return self
 
     '''
-        Zhiwei's 7a/7e code starts from here
+        Zhiwei's 7a/7e code starts from here.
     '''
     def ZhiweiHu_coursenum(self,coursenum):
         ''' ZhiweiHu_coursenum filters the courses by course number '''
@@ -63,7 +63,7 @@ class Schedule():
     def ZhiweiHu_own_filter_sort(self):
         return Schedule(sorted(self.courses, key=lambda course: course['enrolled'], reverse=True))
     '''
-        Zhiwei's 7a/7e code ends here
+        Zhiwei's 7a/7e code ends here.
     '''
 
     # def ZhiweiHu_email(self,emails):
