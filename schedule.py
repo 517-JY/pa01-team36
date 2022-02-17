@@ -51,9 +51,11 @@ class Schedule():
             return self
 
     '''Zhiwei's 7a/7e code starts from here.'''
-    def ZhiweiHu_coursenum(self,coursenum):
+    def ZhiweiHu_course(self,coursenum):
         ''' ZhiweiHu_coursenum filters the courses by course number '''
-        return Schedule([course for course in self.courses if course['coursenum'] in coursenum])
+        coursenum_str = coursenum.upper().split()
+        print(coursenum_str[0], coursenum_str[1])
+        return Schedule([course for course in self.courses if course['coursenum'] == coursenum_str[1] and course['subject'] == coursenum_str[0]])
 
     def ZhiweiHu_own_filter_small_class(self):
         return Schedule([course for course in self.courses if course['enrolled'] <= 20 and course['enrolled'] > 0])
