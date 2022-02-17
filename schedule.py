@@ -25,11 +25,15 @@ class Schedule():
 
     def lastname(self,names):
         ''' lastname returns the courses by a particular instructor last name'''
-        return Schedule([course for course in self.courses if course['instructor'][1] in names])
+        stripped = [name.strip().lower() for name in names]
+        print('\n** Requested lastname: ', stripped, '\n')
+        return Schedule([course for course in self.courses if course['instructor'][1].lower() in stripped])
 
     def email(self,emails):
         ''' email returns the courses by a particular instructor email'''
-        return Schedule([course for course in self.courses if course['instructor'][2] in emails])
+        stripped = [email.strip().lower() for email in emails]
+        print('\n** Requested Email: ', stripped, '\n')
+        return Schedule([course for course in self.courses if course['instructor'][2] in stripped])
 
     def term(self,terms):
         ''' email returns the courses in a list of term'''
@@ -41,7 +45,10 @@ class Schedule():
 
     def subject(self,subjects):
         ''' subject filters the courses by subject '''
-        return Schedule([course for course in self.courses if course['subject'] in subjects])
+        print('** Email jingnuan@brandeis.edu if you have questions about this command :)')
+        upper_case = [s.upper() for s in subjects]
+        print('\n** Requested Key Words: ', upper_case, '\n')
+        return Schedule([course for course in self.courses if course['subject'] in upper_case])
 
     def sort(self,field):
         if field=='subject':
@@ -49,4 +56,18 @@ class Schedule():
         else:
             print("can't sort by "+str(field)+" yet")
             return self
+        
+    def coursenum(self, coursenums):
+        ''' coursenum filters the courses by course number '''
+        upper_coursenum = [c.upper() for c in coursenums]
+        print('\n** Requested Course Numbers: ', upper_coursenum, '\n')
+        return Schedule([course for course in self.courses if course['coursenum'] in upper_coursenum])
+    
+    def title(self, title):
+        ''' title filters the courses by phrase in title '''
+        split_phrases = title.split()
+        print('\n** Requested title: ',split_phrases, '\n')
+        return Schedule([course for course in self.courses for phrase in split_phrases if phrase in course['name'].lower()])
+
  
+    

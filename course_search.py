@@ -20,6 +20,8 @@ subject (filter by subject, e.g. COSI, or LALS)
 title  (filter by phrase in title)
 description (filter by phrase in description)
 timeofday (filter by day and time, e.g. meets at 11 on Wed)
+coursenum (filter by course number, e.g. 21A, 221B, 103A)
+lastname (filter by instructor lastname, e.g. hickey)
 '''
 
 terms = {c['term'] for c in schedule.courses}
@@ -47,6 +49,18 @@ def topmenu():
         elif command in ['s','subject']:
             subject = input("enter a subject:")
             schedule = schedule.subject([subject])
+        elif command in ['cnum', 'coursenum']:
+            coursenum = input("enter a course number:")
+            schedule = schedule.coursenum([coursenum])
+        elif command in ['e', 'email']:
+            email = input("enter an email:")
+            schedule = schedule.email([email])
+        elif command in ['ln', 'lastname']:
+            lastname = input("enter a lastname:")
+            schedule = schedule.lastname([lastname])
+        elif command in ['tt', 'title']:
+            title = input("enter a phrash in course titles: ")
+            schedule = schedule.title(title)
         else:
             print('command',command,'is not supported')
             continue
