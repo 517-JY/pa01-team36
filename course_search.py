@@ -29,7 +29,7 @@ def topmenu():
     topmenu is the top level loop of the course search app
     '''
     global schedule
-    while True:         
+    while True:     
         command = input(">> (h for help) ")
         if command=='quit':
             return
@@ -49,7 +49,8 @@ def topmenu():
             schedule = schedule.subject([subject])
             '''Zhiwei's 7a/7b/7e code starts from here'''
         elif command in ['course']:
-            course = input("enter course number, for example, COSI 12B, make sure there is a space between subject and course code: ")
+            course = input("enter course number, for example, COSI 12B,"+
+            "make sure there is a space between subject and course code: ")
             schedule = schedule.ZhiweiHu_course(course)
         elif command in ['instructor']:
             sub_command = input("filter by email or lastname?")
@@ -74,11 +75,10 @@ def topmenu():
 
 def print_course(course):
     '''
-    print_course prints a brief description of the course 
+    print_course prints a brief description of the course
     '''
     print(course['subject'],course['coursenum'],course['section'],
           course['name'],course['term'],course['instructor'])
 
 if __name__ == '__main__':
     topmenu()
-

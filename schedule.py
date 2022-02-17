@@ -30,7 +30,7 @@ class Schedule():
     def email(self,emails):
         ''' email returns the courses by a particular instructor email'''
         return Schedule([course for course in self.courses if course['instructor'][2] in emails])
-
+        
     def term(self,terms):
         ''' email returns the courses in a list of term'''
         return Schedule([course for course in self.courses if course['term'] in terms])
