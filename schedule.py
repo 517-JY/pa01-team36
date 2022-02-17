@@ -27,7 +27,8 @@ class Schedule():
         ''' lastname returns the courses by a particular instructor last name'''
         stripped = [name.strip().lower() for name in names]
         print('\n** Requested lastname: ', stripped, '\n')
-        return Schedule([course for course in self.courses if course['instructor'][1].lower() in stripped])
+        return Schedule([course for course in self.courses
+            if course['instructor'][1].lower() in stripped])
 
     def email(self,emails):
         ''' email returns the courses by a particular instructor email'''
@@ -51,33 +52,41 @@ class Schedule():
         return Schedule([course for course in self.courses if course['subject'] in upper_case])
 
     def sort(self,field):
+        ''' sort filters the courses by subject'''
         if field=='subject':
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
-        else:
-            print("can't sort by "+str(field)+" yet")
-            return self
-        
+
+        print("can't sort by "+str(field)+" yet")
+        return self
     def coursenum(self, coursenums):
         ''' coursenum filters the courses by course number '''
         upper_coursenum = [c.upper() for c in coursenums]
         print('\n** Requested Course Numbers: ', upper_coursenum, '\n')
-        return Schedule([course for course in self.courses if course['coursenum'] in upper_coursenum])
-    
+        return Schedule([
+            course for course in self.courses
+                if course['coursenum'] in upper_coursenum
+        ])
     def title(self, title):
         ''' title filters the courses by phrase in title '''
         key_words = title.split()
         print('\n** Requested title: ',key_words, '\n')
-        return Schedule([course for course in self.courses for word in key_words if word in course['name'].lower()])
-    
+        return Schedule([
+            course for course in self.courses
+                for word in key_words
+                    if word in course['name'].lower()
+        ])
     def phrase(self, phrase):
         ''' phrase filters the courses by phrase in the description '''
         print('\n** Requested phrase: ', phrase.strip().lower(), '\n')
-        return Schedule([course for course in self.courses if phrase.lower() in course['description'].lower()])
-    
+        return Schedule([
+            course for course in self.courses
+                if phrase.lower() in course['description'].lower()
+        ])
     def jingnu_status(self, status):
         ''' jingnu_status filters the courses by course status '''
         print('\n** Requested status: ', status.strip().lower(), '\n')
-        return Schedule([course for course in self.courses if course['status_text'].lower() == status])
-
- 
+        return Schedule([
+            course for course in self.courses
+                if course['status_text'].lower() == status
+        ])
     
