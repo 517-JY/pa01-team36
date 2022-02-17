@@ -61,6 +61,15 @@ def topmenu():
         elif command in ['tt', 'title']:
             title = input("enter a phrash in course titles: ")
             schedule = schedule.title(title)
+        elif command in ['p', 'phrase']:
+            phrase = input("enter a phrase in course description: ")
+            schedule = schedule.phrase(phrase)
+        elif command in ['jingnu', 'ja']:
+            status = input("enter course status (o for open, c for closed): ")
+            if status == 'o':
+                schedule = schedule.jingnu_status('open')
+            elif status == 'c':
+                schedule = schedule.jingnu_status('closed')
         else:
             print('command',command,'is not supported')
             continue
@@ -77,6 +86,7 @@ def print_course(course):
     '''
     print(course['subject'],course['coursenum'],course['section'],
           course['name'],course['term'],course['instructor'])
+    print('-- course description --\n', course['description'], '\n')
 
 if __name__ == '__main__':
     topmenu()

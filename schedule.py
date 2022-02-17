@@ -65,9 +65,19 @@ class Schedule():
     
     def title(self, title):
         ''' title filters the courses by phrase in title '''
-        split_phrases = title.split()
-        print('\n** Requested title: ',split_phrases, '\n')
-        return Schedule([course for course in self.courses for phrase in split_phrases if phrase in course['name'].lower()])
+        key_words = title.split()
+        print('\n** Requested title: ',key_words, '\n')
+        return Schedule([course for course in self.courses for word in key_words if word in course['name'].lower()])
+    
+    def phrase(self, phrase):
+        ''' phrase filters the courses by phrase in the description '''
+        print('\n** Requested phrase: ', phrase.strip().lower(), '\n')
+        return Schedule([course for course in self.courses if phrase.lower() in course['description'].lower()])
+    
+    def jingnu_status(self, status):
+        ''' jingnu_status filters the courses by course status '''
+        print('\n** Requested status: ', status.strip().lower(), '\n')
+        return Schedule([course for course in self.courses if course['status_text'].lower() == status])
 
  
     
