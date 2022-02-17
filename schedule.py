@@ -50,9 +50,7 @@ class Schedule():
             print("can't sort by "+str(field)+" yet")
             return self
 
-    '''
-        Zhiwei's 7a/7e code starts from here.
-    '''
+    '''Zhiwei's 7a/7e code starts from here.'''
     def ZhiweiHu_coursenum(self,coursenum):
         ''' ZhiweiHu_coursenum filters the courses by course number '''
         return Schedule([course for course in self.courses if course['coursenum'] in coursenum])
@@ -62,11 +60,5 @@ class Schedule():
 
     def ZhiweiHu_own_filter_sort(self):
         return Schedule(sorted(self.courses, key=lambda course: course['enrolled'], reverse=True))
-    '''
-        Zhiwei's 7a/7e code ends here.
-    '''
-
-    # def ZhiweiHu_email(self,emails):
-    #     ''' ZhiweiHu_coursenum filters the courses by course number '''
-    #     return Schedule([course for course in self.courses if course['instructor'][2] in emails])
+    '''Zhiwei's 7a/7e code ends here.'''
 
