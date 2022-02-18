@@ -26,11 +26,16 @@ class Schedule():
 
     def lastname(self,names):
         ''' lastname returns the courses by a particular instructor last name'''
-        return Schedule([course for course in self.courses if course['instructor'][1] in names])
+        stripped = [name.strip().lower() for name in names]
+        print('\n** Requested lastname: ', stripped, '\n')
+        return Schedule([course for course in self.courses
+            if course['instructor'][1].lower() in stripped])
 
     def email(self,emails):
         ''' email returns the courses by a particular instructor email'''
-        return Schedule([course for course in self.courses if course['instructor'][2] in emails])
+        stripped = [email.strip().lower() for email in emails]
+        print('\n** Requested Email: ', stripped, '\n')
+        return Schedule([course for course in self.courses if course['instructor'][2] in stripped])
 
     def term(self,terms):
         ''' email returns the courses in a list of term'''
@@ -42,9 +47,13 @@ class Schedule():
 
     def subject(self,subjects):
         ''' subject filters the courses by subject '''
-        return Schedule([course for course in self.courses if course['subject'] in subjects])
+        print('** Email jingnuan@brandeis.edu if you have questions about this command :)')
+        upper_case = [s.upper() for s in subjects]
+        print('\n** Requested Key Words: ', upper_case, '\n')
+        return Schedule([course for course in self.courses if course['subject'] in upper_case])
 
     def sort(self,field):
+        ''' sort filters the courses by subject'''
         if field=='subject':
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
         else:
@@ -54,4 +63,37 @@ class Schedule():
     def weekday_zhengchu(self,weekday):
         ''' weekday filters the courses by weekday '''
         return Schedule([course for course in self.courses if len(course['times'])>0 and weekday in course['times'][0]['days']])
- 
+        print("can't sort by "+str(field)+" yet")
+        return self
+    def coursenum(self, coursenums):
+        ''' coursenum filters the courses by course number '''
+        upper_coursenum = [c.upper() for c in coursenums]
+        print('\n** Requested Course Numbers: ', upper_coursenum, '\n')
+        return Schedule([
+            course for course in self.courses
+                if course['coursenum'] in upper_coursenum
+        ])
+    def title(self, title):
+        ''' title filters the courses by phrase in title '''
+        key_words = title.split()
+        print('\n** Requested title: ',key_words, '\n')
+        return Schedule([
+            course for course in self.courses
+                for word in key_words
+                    if word in course['name'].lower()
+        ])
+    def phrase(self, phrase):
+        ''' phrase filters the courses by phrase in the description '''
+        print('\n** Requested phrase: ', phrase.strip().lower(), '\n')
+        return Schedule([
+            course for course in self.courses
+                if phrase.lower() in course['description'].lower()
+        ])
+    def jingnu_status(self, status):
+        ''' jingnu_status filters the courses by course status '''
+        print('\n** Requested status: ', status.strip().lower(), '\n')
+        print('test for demo video - Jingnu')
+        return Schedule([
+            course for course in self.courses
+                if course['status_text'].lower() == status
+        ])
