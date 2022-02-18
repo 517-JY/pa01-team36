@@ -93,6 +93,15 @@ def topmenu():
         elif command in ['bohan']:
             day = input("enter a day ")
             schedule = schedule.bohan_day(day)
+        elif command in ['title2']:
+            title2 = input("enter a phrase:")
+            schedule = schedule.title2(title2)
+        elif command in ['description2']:
+            description2 = input("enter a phrase:")
+            schedule = schedule.description2(description2)
+        elif command in ['notday']:
+            notday = input("enter a busy day:")
+            schedule = schedule.notday(notday)
         else:
             print('command',command,'is not supported')
             continue

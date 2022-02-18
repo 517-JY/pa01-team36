@@ -58,6 +58,8 @@ class Schedule():
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
         else:
             print("can't sort by "+str(field)+" yet")
+
+
             return self
 
     '''Zhiwei's 7a/7e code starts from here.'''
@@ -112,4 +114,17 @@ class Schedule():
         ])
     def bohan_day(self, day):
         return Schedule([course for course in self.courses if len(course['times']) != 0 and day in course['times'][0]['days']])
+     
+
+    def title2(self,phrase):
+        ''' filters courses containing the phrase in their title '''
+        return Schedule([course for course in self.courses if phrase in ' '.join(str(elem) for elem in course['name'].split())])
+    def description2(self,phrase):
+        ''' filters courses containing the phrase in their title '''
+        return Schedule([course for course in self.courses if phrase in ' '.join(str(elem) for elem in course['description'].split())])
+
+    ''' Cutomize question: filters courses do not take lectures on the given day'''
+    def notday(self,day):
+        ''' filters courses do not take lectures on the given day '''
+        return Schedule([course for course in self.courses if len(course['times'])==3 and day not in course['times'][2]])
  
