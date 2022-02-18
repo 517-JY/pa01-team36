@@ -4,6 +4,7 @@ students search for courses they might want to take at Brandeis
 '''
 # import sys
 # import sched
+# This is for pa01
 from schedule import Schedule
 
 schedule = Schedule()

@@ -30,7 +30,7 @@ class Schedule():
     def email(self,emails):
         ''' email returns the courses by a particular instructor email'''
         return Schedule([course for course in self.courses if course['instructor'][2] in emails])
-        
+
     def term(self,terms):
         ''' email returns the courses in a list of term'''
         return Schedule([course for course in self.courses if course['term'] in terms])
@@ -54,7 +54,6 @@ class Schedule():
     def ZhiweiHu_course(self,coursenum):
         ''' ZhiweiHu_coursenum filters the courses by course number '''
         coursenum_str = coursenum.upper().split()
-        print(coursenum_str[0], coursenum_str[1])
         return Schedule([course for course in self.courses if course['coursenum'] == coursenum_str[1] and course['subject'] == coursenum_str[0]])
 
     def ZhiweiHu_own_filter_small_class(self):
