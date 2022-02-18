@@ -110,4 +110,3 @@ class Schedule():
             course for course in self.courses
                 if course['status_text'].lower() == status
         ])
-
