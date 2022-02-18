@@ -90,6 +90,7 @@ def topmenu():
                 schedule = schedule.jingnu_status('open')
             elif status == 'c':
                 schedule = schedule.jingnu_status('closed')
+        ''' Bohan's slight change of code'''
         elif command in ['bohan']:
             day = input("enter a day ")
             schedule = schedule.bohan_day(day)
