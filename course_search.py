@@ -2,7 +2,9 @@
 course_search is a Python script using a terminal based menu to help
 students search for courses they might want to take at Brandeis
 '''
-
+# import sys
+# import sched
+# This is for pa01
 from schedule import Schedule
 
 schedule = Schedule()
@@ -48,18 +50,34 @@ def topmenu():
         elif command in ['s','subject']:
             subject = input("enter a subject:")
             schedule = schedule.subject([subject])
+            '''Zhiwei's 7a/7b/7e code starts from here'''
+        elif command in ['course']:
+            course = input("enter course number, for example, COSI 12B,"+
+            "make sure there is a space between subject and course code: ")
+            schedule = schedule.ZhiweiHu_course(course)
+        elif command in ['instructor']:
+            sub_command = input("filter by email or lastname?")
+            if sub_command == 'email':
+                email = input("enter the instructor's email")
+                schedule = schedule.email([email])
+            elif sub_command == 'lastname':
+                lastname = input("enter the instructor's lastname")
+                schedule = schedule.lastname([lastname])
+        elif command in ['small class', 'smallclass', 'small_class', 'smallClass']:
+            schedule = schedule.ZhiweiHu_own_filter_small_class().ZhiweiHu_own_filter_sort()
+            '''Zhiwei's 7a/7b/7e code ends here'''
         elif command in ['zhengchu']:
             weekday= input("enter a weekday:")
             schedule=schedule.weekday_zhengchu(weekday)
-        elif command in ['cnum', 'coursenum']:
-            coursenum = input("enter a course number:")
-            schedule = schedule.coursenum([coursenum])
-        elif command in ['e', 'email']:
-            email = input("enter an email:")
-            schedule = schedule.email([email])
-        elif command in ['ln', 'lastname']:
-            lastname = input("enter a lastname:")
-            schedule = schedule.lastname([lastname])
+#         elif command in ['cnum', 'coursenum']:
+#             coursenum = input("enter a course number:")
+#             schedule = schedule.coursenum([coursenum])
+#         elif command in ['e', 'email']:
+#             email = input("enter an email:")
+#             schedule = schedule.email([email])
+#         elif command in ['ln', 'lastname']:
+#             lastname = input("enter a lastname:")
+#             schedule = schedule.lastname([lastname])
         elif command in ['tt', 'title']:
             title = input("enter a phrash in course titles: ")
             schedule = schedule.title(title)
@@ -83,7 +101,9 @@ def topmenu():
         print('\n'*3)
 
 def print_course(course):
-    '''print_course prints a brief description of the course '''
+    '''
+    print_course prints a brief description of the course
+    '''
     print(course['subject'],course['coursenum'],course['section'],
           course['name'],course['term'],course['instructor'])
         

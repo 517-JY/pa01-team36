@@ -60,6 +60,19 @@ class Schedule():
             print("can't sort by "+str(field)+" yet")
             return self
 
+    '''Zhiwei's 7a/7e code starts from here.'''
+    def ZhiweiHu_course(self,coursenum):
+        ''' ZhiweiHu_coursenum filters the courses by course number '''
+        coursenum_str = coursenum.upper().split()
+        return Schedule([course for course in self.courses if course['coursenum'] == coursenum_str[1] and course['subject'] == coursenum_str[0]])
+
+    def ZhiweiHu_own_filter_small_class(self):
+        return Schedule([course for course in self.courses if course['enrolled'] <= 20 and course['enrolled'] > 0])
+
+    def ZhiweiHu_own_filter_sort(self):
+        return Schedule(sorted(self.courses, key=lambda course: course['enrolled'], reverse=True))
+    '''Zhiwei's 7a/7e code ends here.'''
+
     def weekday_zhengchu(self,weekday):
         ''' weekday filters the courses by weekday '''
         return Schedule([course for course in self.courses if len(course['times'])>0 and weekday in course['times'][0]['days']])
@@ -97,3 +110,4 @@ class Schedule():
             course for course in self.courses
                 if course['status_text'].lower() == status
         ])
+
