@@ -126,5 +126,5 @@ class Schedule():
     ''' Cutomize question: filters courses do not take lectures on the given day'''
     def notday(self,day):
         ''' filters courses do not take lectures on the given day i.e .'th''''
-        return Schedule([course for course in self.courses if len(course['times'])==3 and day not in course['times'][2]])
+        return Schedule([course for course in self.courses if len(course['times'])>=3 and day not in course['times'][2]])
  
