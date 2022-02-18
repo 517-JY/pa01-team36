@@ -30,7 +30,7 @@ def topmenu():
     topmenu is the top level loop of the course search app
     '''
     global schedule
-    while True:     
+    while True:
         command = input(">> (h for help) ")
         if command=='quit':
             return
@@ -54,12 +54,12 @@ def topmenu():
             "make sure there is a space between subject and course code: ")
             schedule = schedule.ZhiweiHu_course(course)
         elif command in ['instructor']:
-            sub_command = input("filter by email or lastname?")
+            sub_command = input("filter by email or lastname? ")
             if sub_command == 'email':
-                email = input("enter the instructor's email")
+                email = input("enter the instructor's email: ")
                 schedule = schedule.email([email])
             elif sub_command == 'lastname':
-                lastname = input("enter the instructor's lastname")
+                lastname = input("enter the instructor's lastname: ")
                 schedule = schedule.lastname([lastname])
         elif command in ['small class', 'smallclass', 'small_class', 'smallClass']:
             schedule = schedule.ZhiweiHu_own_filter_small_class().ZhiweiHu_own_filter_sort()
