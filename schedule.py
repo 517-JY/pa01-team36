@@ -73,7 +73,7 @@ class Schedule():
         return Schedule([
             course for course in self.courses
                 for word in key_words
-                    if word in course['name'].lower()
+                    if word.lower() in course['name'].lower()
         ])
     def phrase(self, phrase):
         ''' phrase filters the courses by phrase in the description '''
@@ -85,7 +85,7 @@ class Schedule():
     def jingnu_status(self, status):
         ''' jingnu_status filters the courses by course status '''
         print('\n** Requested status: ', status.strip().lower(), '\n')
-        print('test for demo video - Jingnu')
+        print('test for demo video - Jingnu An - test 2')
         return Schedule([
             course for course in self.courses
                 if course['status_text'].lower() == status
