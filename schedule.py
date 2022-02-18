@@ -4,6 +4,7 @@ by filtering, mapping, printing, etc.
 '''
 
 import json
+from os import times
 
 class Schedule():
     '''
@@ -55,7 +56,13 @@ class Schedule():
         ''' sort filters the courses by subject'''
         if field=='subject':
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
+        else:
+            print("can't sort by "+str(field)+" yet")
+            return self
 
+    def weekday_zhengchu(self,weekday):
+        ''' weekday filters the courses by weekday '''
+        return Schedule([course for course in self.courses if len(course['times'])>0 and weekday in course['times'][0]['days']])
         print("can't sort by "+str(field)+" yet")
         return self
     def coursenum(self, coursenums):
@@ -90,4 +97,3 @@ class Schedule():
             course for course in self.courses
                 if course['status_text'].lower() == status
         ])
-    

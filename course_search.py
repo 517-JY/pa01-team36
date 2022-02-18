@@ -48,6 +48,9 @@ def topmenu():
         elif command in ['s','subject']:
             subject = input("enter a subject:")
             schedule = schedule.subject([subject])
+        elif command in ['zhengchu']:
+            weekday= input("enter a weekday:")
+            schedule=schedule.weekday_zhengchu(weekday)
         elif command in ['cnum', 'coursenum']:
             coursenum = input("enter a course number:")
             schedule = schedule.coursenum([coursenum])
@@ -83,6 +86,7 @@ def print_course(course):
     '''print_course prints a brief description of the course '''
     print(course['subject'],course['coursenum'],course['section'],
           course['name'],course['term'],course['instructor'])
+        
 
 if __name__ == '__main__':
     topmenu()
