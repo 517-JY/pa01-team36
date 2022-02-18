@@ -110,3 +110,6 @@ class Schedule():
             course for course in self.courses
                 if course['status_text'].lower() == status
         ])
+    def bohan_day(self, day):
+        return Schedule([course for course in self.courses if len(course['times']) != 0 and day in course['times'][0]['days']])
+ 
