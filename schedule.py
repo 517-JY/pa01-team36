@@ -85,6 +85,7 @@ class Schedule():
     def jingnu_status(self, status):
         ''' jingnu_status filters the courses by course status '''
         print('\n** Requested status: ', status.strip().lower(), '\n')
+        print('test for demo video - Jingnu')
         return Schedule([
             course for course in self.courses
                 if course['status_text'].lower() == status
